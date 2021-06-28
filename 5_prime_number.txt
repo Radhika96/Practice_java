@@ -1,0 +1,56 @@
+import java.util.*;  
+
+
+class InvalidInputException extends Exception{  
+    InvalidInputException(String input){  
+        super(input);  
+    }  
+} 
+class LargeInputException extends Exception{  
+    LargeInputException(String input){  
+        super(input);  
+    }  
+} 
+
+public class HellowWorld{  
+    void findPrimeNumber(int s){
+    int n=10;
+        System.out.println("Input is: " + n);             
+        int i,m=0,flag=0;    
+        m=n/2;    
+        if(n==0||n==1){
+            System.out.println(n+" is not prime number");    
+        }
+        else{
+            for(i=2;i<=m;i++){    
+                if(n%i==0){    
+                    System.out.println(n+" is not prime number");    
+                    flag=1;    
+                    break;    
+                }    
+            }    
+        if(flag==0)  { 
+            System.out.println(n+" is prime number"); }
+        }//else
+    }
+
+ 
+ public static void main(String args[]){  
+    try{  
+        HellowWorld hw =new HellowWorld();
+        Scanner in1 = new Scanner(System.in);  
+        System.out.print("Enter the input value: ");  
+        int n1 = in1.nextInt();  
+        System.out.println("Input is: " + n1);  
+        if(n1<0)  
+            throw new InvalidInputException("Number is negative");  
+        else if(n1>100)
+            throw new LargeInputException("Number is too large");
+        else 
+            hw.findPrimeNumber(n1);  
+        }
+        catch(Exception m){
+            System.out.println("Exception occured: "+m);
+        }  
+    }  
+} 

@@ -1,0 +1,56 @@
+import java.util.*;  
+
+public class Palindrome{
+    
+    Boolean checkPalindrome(int n){
+        int r,sum=0,temp;    
+        temp=n;    
+        while(n>0){    
+            r=n%10;  
+            sum=(sum*10)+r;    
+            n=n/10;    
+        }    
+        if(temp==sum)   
+            return true;
+        else
+            return false;
+    }
+    public static void main(String []args){
+        Palindrome p =new Palindrome();
+        Scanner in = new Scanner(System.in);   
+        System.out.println("Enter the number to get a palindrome");  
+        int n1 = in.nextInt();   Boolean output; int min=0; int max=0;
+        
+        output = p.checkPalindrome(n1);  
+        if (output == false){
+            for(int i=n1-1;i>0;i--)    {
+                Boolean result = p.checkPalindrome(i); 
+                if (result==true){
+                    min = i;
+                    // System.out.println(i+" is a palindrome number"); 
+                    break;
+                }
+            }
+            for(int i=n1;i<1000;i++)    {
+                Boolean result = p.checkPalindrome(i); 
+                if (result==true){
+                    max=i;
+                    //System.out.println(i+" is a palindrome number"); 
+                    break;
+                }
+            }
+            //System.out.println("Output Min "+min+" Max "+max);
+            if ( (n1-min) < (max-n1) ){
+                System.out.println("Nearest palindrome number is "+min); 
+            }
+            else{
+                System.out.println("Nearest palindrome number is "+max); 
+            }
+        }
+        else{
+             System.out.println("Nearest palindrome number is "+n1); 
+        }
+        
+        in.close();
+    }
+}

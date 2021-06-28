@@ -1,0 +1,59 @@
+import java.util.*;
+import java.io.*; 
+
+abstract class Shapeclass{
+    protected String sShape;  
+    abstract void shape();
+    public void displayShape(String sShape){  
+        System.out.println("Shape is "+sShape);  
+    }
+}//end of shape class. 
+
+class circle extends Shapeclass {
+    public void shape(){
+        sShape = "circle";
+        System.out.println("----Shape is circle");
+    }
+}  
+class rectangle extends Shapeclass  {  
+    public void shape(){
+        sShape = "rectangle";
+        System.out.println("----Shape is rectangle");
+    }
+}  
+class square extends Shapeclass {  
+    public void shape(){
+        sShape = "square";
+        System.out.println("----Shape is square");
+    }
+} 
+    
+class GetshapeName{  
+    public Shapeclass getShape(String shapeType){
+        if(shapeType == null){  
+            return null;  
+        }
+        if(shapeType.equalsIgnoreCase("circle")) {  
+            return new circle();  
+        }   
+        else if(shapeType.equalsIgnoreCase("rectangle")){  
+            return new rectangle();  
+        }   
+        else if(shapeType.equalsIgnoreCase("square")) {  
+            return new square();  
+        }  
+      return null;  
+   }  
+}//end of GetPlanFactory class.      
+    
+public class FindShape{  
+    public static void main(String args[])throws IOException{  
+        GetshapeName shpaeName = new GetshapeName();  
+        BufferedReader br=new BufferedReader(new InputStreamReader(System.in));  
+        String sShapeName=br.readLine();  
+        System.out.println("Enter the Shape: "+sShapeName);  
+        Shapeclass s = shpaeName.getShape(sShapeName);  
+        s.shape();
+        s.displayShape(sShapeName);
+    }  
+}  

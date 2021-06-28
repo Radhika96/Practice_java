@@ -1,0 +1,39 @@
+package test;
+import java.util.*;
+import java.util.concurrent.*;
+
+public class Factorial_callable implements Callable<Integer>{
+	private int var;
+
+	public Factorial_callable(int i) {
+    	 this.var=i;
+	}
+	public Integer call() throws Exception {    
+        Thread.sleep(1000);    
+        int i,f=1;  
+        int number=var;   
+        for(i=1;i<=number;i++){    
+             f=f*i;    
+        }  
+       // System.out.println("Factorial of "+number+" is: "+f); 
+        return f;
+    }    
+        
+	public static void main(String[] args) {
+		ExecutorService executor = Executors.newFixedThreadPool(5);    
+	    List<Future<Integer>> list = new ArrayList<Future<Integer>>();    
+	    for(int i=1; i<= 5; i++){
+	    	Callable<Integer> callable = new Factorial_callable(i); 
+	        Future<Integer> ftr = executor.submit(callable);    
+	        list.add(ftr);    
+	        }    
+	        for(Future<Integer> fut : list){    
+	            try {      
+	               System.out.println("Factorial  is: "+fut.get()); 
+	            } catch (InterruptedException | ExecutionException e) {    
+	                e.printStackTrace();    
+	            }    
+	        }    
+	       executor.shutdown();  
+		}
+	}

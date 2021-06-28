@@ -1,0 +1,70 @@
+import java.util.*;
+
+class Student {  
+  
+   String name;  
+   int age;   int id;  
+    Student(int id,String name,int age){  
+    this.id=id;  
+    this.name=name;  
+    this.age=age;  
+    }
+
+	public int getID() {
+		return id;
+	}
+
+	public void setID(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+    }  
+
+ public class HelloWorld{  
+    public static void main(String args[]){  
+    ArrayList<Student> ASort=new ArrayList<Student>();  
+    ASort.add(new Student(001,"Radhika",23));  
+    ASort.add(new Student(002,"Iniya",22));  
+    ASort.add(new Student(003,"Varsini",19)); 
+    ASort.add(new Student(004,"Kowsi",15)); 
+    ASort.add(new Student(005,"Mithil",9)); 
+
+    Comparator<Student> cm1=Comparator.comparing(Student::getName);
+     System.out.println(cm1);
+     Collections.sort(ASort,cm1);
+     System.out.println("Sort by Name");
+     for(Student s: ASort){
+    	 System.out.println(s.id+" "+s.name+" "+s.age);
+    	 }
+    
+      Comparator<Student> cm2=Comparator.comparing(Student::getAge);
+	 Collections.sort(ASort,cm2);
+     System.out.println("Sort by Age");
+     for(Student s: ASort){
+    	 System.out.println(s.id+" "+s.name+" "+s.age);
+    	 }
+    
+      Comparator<Student> cm3=Comparator.comparing(Student::getID);
+	 Collections.sort(ASort,cm3);
+     System.out.println("Sort by ID");
+     for(Student s: ASort){
+    	 System.out.println(s.id+" "+s.name+" "+s.age);
+    	 }
+    }  
+    }  
