@@ -1,0 +1,62 @@
+package test;
+
+import java.util.*;  
+import java.io.*;  
+
+class Player{
+ String name; int age; String game;
+public Player( String name, int age, String game) {  
+    this.name = name;  
+    this.age = age;  
+    this.game = game;  
+}
+public String getName() {
+	
+	return game;
+}  
+public Integer getAge() {
+	return age;
+}
+}
+
+public class sortset{
+     public static void main(String []args){
+
+        //List<Player> sSet=new ArrayList<Player>();  
+        Set<Player> sSet=new LinkedHashSet<Player>();  
+        Player p1=new Player("Rad",25,"Cricket");  
+        Player p2=new Player("Ini",20,"Baseball");  
+        Player p3=new Player("Var",23,"Swimming"); 
+        Player p5=new Player("Mithil",20,"Hockey"); 
+        Player p4=new Player("Kowsi",19,"Swimming");  
+    
+        sSet.add(p1);  
+        sSet.add(p2);  
+        sSet.add(p3); 
+        sSet.add(p4);  
+        sSet.add(p5);  
+        
+        List<Player> lst = new ArrayList<>();
+        for(Player p : sSet) {
+        	lst.add(p);
+        }
+        Collections.sort(lst, new Comparator<Player>() {
+                public int compare(Player o1, Player o2) {
+                	// System.out.println("   "+o1.getName()+"--->+ "+o2.getName()); 
+                	int res = o1.getName().compareTo(o2.getName());
+                	// System.out.println(" res  "+res);
+                	 if (res==0)
+                	 {	int res1 = o1.getAge().compareTo(o2.getAge());
+                	// System.out.println(" res  "+res1);
+                		 return o1.getAge().compareTo(o2.getAge());
+                	 }
+                	 else
+                    return o1.getName().compareTo(o2.getName());
+                }
+            });
+    for(Player b:lst){  
+        System.out.println(b.name+" "+b.age+" "+b.game);  }
+     }//main
+}
+
+
