@@ -1,0 +1,39 @@
+package com.example.memoryleak;
+import java.util.HashMap;
+import java.util.Map;
+public class Cache {
+       private Map<String,String> map= new HashMap<String,String>();
+       public void assign()
+       {
+              map.put("1", "first");
+              map.put("2", "second");
+              map.put("3", "third");
+       }
+       public Map<String,String> getCache()
+       {
+              return map;
+       }
+       public void print()
+       {
+    	   for(String key : map.keySet())
+              {
+                String value = map.get(key);                 
+                System.out.println(key + " :: "+ value);
+              }
+       }
+       public long sum(long l)
+       {
+              Long sum=0L;
+               sum =sum+l;
+               return sum;
+       }
+       public static void main(String[] args) {            
+              Cache cache = new Cache();
+              cache.assign();
+              cache.print();
+             
+              for(long ;i<1000;i++)
+              {
+                     cache.sum(i);
+              }
+       }
