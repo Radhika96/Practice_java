@@ -1,0 +1,58 @@
+package test;
+
+import java.util.*;  
+class Player implements Comparable<Player>{
+	String name; int age; String game;
+	public Player( String name, int age, String game) {  
+	    this.name = name;  
+	    this.age = age;  
+	    this.game = game;  
+	}
+	private String getGame() {
+		return game;
+	}  
+	private Integer getAge() {
+		return age;
+	}
+	private String getName() {
+		return name;
+	}
+	public int compareTo(Player b) {
+		if (name.equals(b.getName())) {
+			// System.out.println("Start");	
+	            return 0;
+	    }	
+		else if(game.compareTo(b.getGame()) == 0) {
+			return this.getAge().compareTo(b.getAge());
+		}
+		else
+			return  this.getGame().compareTo(b.getGame());
+		/*	 
+		else 
+		return this.getName().compareTo(b.getName());	*/
+	}
+}
+public class Treeset {
+
+	public static void main(String[] args) {
+		TreeSet<Player> sSet=new TreeSet<Player>();  
+	        Player p1=new Player("Ini",25,"Cricket");  
+	        Player p2=new Player("Ani",20,"Swimming");  
+	        Player p3=new Player("Ini",23,"Baseball");  
+			Player p4=new Player("Radhika",20,"Hockey"); 
+			Player p5=new Player("Kowsi",19,"Swimming");
+	        Player p6=new Player("Mithil",23,"Football"); 
+			 
+	        sSet.add(p1);  
+	        sSet.add(p2);  
+	        sSet.add(p3); 
+	        sSet.add(p4);  
+	        sSet.add(p5); 
+	        sSet.add(p6); 
+	       
+	        for(Player b:sSet){  
+	            System.out.println(b.name+" "+b.age+" "+b.game);  }
+	         
+	}
+
+}
